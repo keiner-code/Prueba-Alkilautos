@@ -1,0 +1,40 @@
+<div class="close">
+  <button (click)="showEdit.emit(false)">X</button>
+</div>
+
+<div class="edit">
+  <div>
+    <input
+      type="text"
+      #id
+      name=""
+      id=""
+      placeholder="Ingrese el id del posts"
+    />
+    <button (click)="getByIdPosts(id.value)">Buscar</button>
+  </div>
+</div>
+
+<div class="form">
+  <h1>Editar</h1>
+  <form [formGroup]="editform" (ngSubmit)="updatePosts()">
+    <div class="form-item">
+      <label for="title">userId</label>
+      <input type="text" formControlName="userId" />
+    </div>
+
+    <div class="form-item">
+      <label for="description">title</label>
+      <input type="text" formControlName="title" />
+    </div>
+
+    <div class="form-item">
+      <label for="description">body</label>
+      <textarea formControlName="body"></textarea>
+    </div>
+
+    <div class="form-btn">
+      <button>Editar</button>
+    </div>
+  </form>
+</div>

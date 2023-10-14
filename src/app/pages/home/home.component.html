@@ -1,0 +1,54 @@
+<button (click)="showCreate = !showCreate">Crear Posts</button>
+<button (click)="showEdit = !showEdit">Editar Posts</button>
+
+<div class="crear" [class.active]="showCreate">
+  <div class="create-form">
+    <app-create-posts
+      (showCreate)="changeShowCreate($event)"
+      (newPosts)="addNewPosts($event)"
+    ></app-create-posts>
+  </div>
+</div>
+
+<div class="edit" [class.active]="showEdit">
+  <div class="create-form">
+    <app-edit-posts
+      (showEdit)="changeShowEdit($event)"
+      (postEdit)="changePosts($event)"
+    ></app-edit-posts>
+  </div>
+</div>
+
+<div class="comments" [class.active]="showComments">
+  <div class="content">
+    <button (click)="showComments = false">X</button>
+
+    <div class="item-comments">
+      <div *ngFor="let comment of comments">
+        <div>
+          <h3>{{ comment.name }}</h3>
+          <p>{{ comment.body }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="table">
+  <table>
+    <tr class="table-title">
+      <th>id</th>
+      <th>title</th>
+      <th>body</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr *ngFor="let item of posts">
+      <td>{{ item.id }}</td>
+      <td>{{ item.title }}</td>
+      <td>{{ item.body }}</td>
+      <td>
+        <button (click)="getCommentsId(item.id)">Comentario</button>
+      </td>
+    </tr>
+  </table>
+</div>

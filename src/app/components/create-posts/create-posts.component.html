@@ -1,0 +1,24 @@
+<div class="form">
+  <button (click)="showCreate.emit(false)">X</button>
+  <h1>Insertar</h1>
+  <form [formGroup]="createform" (ngSubmit)="createNewPosts()">
+    <div class="form-item">
+      <label for="title">userId</label>
+      <input type="text" formControlName="userId" />
+    </div>
+
+    <div class="form-item">
+      <label for="description">title</label>
+      <input type="text" formControlName="title" />
+    </div>
+
+    <div class="form-item">
+      <label for="description">body</label>
+      <textarea formControlName="body"></textarea>
+    </div>
+
+    <div class="form-btn">
+      <button>Insertar</button>
+    </div>
+  </form>
+</div>
